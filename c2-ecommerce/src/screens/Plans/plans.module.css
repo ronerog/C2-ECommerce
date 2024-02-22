@@ -1,0 +1,10 @@
+.tela-de-planos {
+    align-items: flex-start;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 70px 0px 0px;
+    position: relative;
+}
+
