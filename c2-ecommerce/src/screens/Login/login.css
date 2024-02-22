@@ -1,31 +1,50 @@
 .sign-in {
-    background-color: #F5F5F5;
+    background-color: white;
     display: flex;
-    flex-direction: row;
+    height: 100vh;
+    text-align: center;
+    align-items: center;
     justify-content: center;
     width: 100%;
 }
 
+.centerdiv {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; 
+}
+
+.centerdiv > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .sign-in .div {
-    background-color: #F5F5F5;
-    height: 1302px;
-    position: relative;
-    width: 1491px;
+    background-color: white;
+    display: flex;
+    height: 100vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .sign-in .text-wrapper {
-color: #66b032;
-font-family: "Outfit", Helvetica;
-font-size: 37px; 
-font-weight: 700; 
-height: 47px;
-left: 595px;
-letter-spacing: 0;
-line-height: normal;
-position: absolute; 
-text-align: center;
-top: 233px;
-width: 300px;
+    color: #66b032;
+    font-family: "Outfit", Helvetica;
+    font-size: 37px; 
+    font-weight: 700; 
+    height: 47px;
+    left: 595px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute; 
+    text-align: center;
+    top: 233px;
+    width: 300px;
 }
 
 .sign-in .text-wrapper-2 {
@@ -64,6 +83,8 @@ width: 300px;
     top: 473px;
     width: 342px;
     }
+
+
 
 .sign-in .div-wrapper {
     background-color: #66b032;

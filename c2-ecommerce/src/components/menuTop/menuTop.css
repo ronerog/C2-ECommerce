@@ -1,14 +1,18 @@
-/* Add a black background color to the top navigation */
 .topnav {
+    position: fixed;
     background-color: white;
-    overflow: hidden;
     text-align: center;
-    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.1); /* Add shadow to the bottom */
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+
+  .topnav > * {
+    margin-right: 15px;
   }
   
-  /* Style the links inside the navigation bar */
+  
   .topnav a {
-    display: inline-block; /* Change from float to inline-block */
+    display: inline-block; 
     color: #8e8383;
     text-align: center;
     padding: 14px 16px;
@@ -16,14 +20,17 @@
     font-size: 17px;
   }
   
-  /* Change the color of links on hover */
+ 
   .topnav a:hover {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: #66b032;
     color: white;
   }
   
-  /* Add a color to the active/current link */
   .topnav a.active {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: #66b032;
     color: white;
   }

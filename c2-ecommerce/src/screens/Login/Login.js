@@ -1,6 +1,7 @@
 'use client';
 import styles from "./login.css";
 import React from "react";
+import icone from "../../../public/icon.png"
 
 export const Login = () => {
 
@@ -10,7 +11,14 @@ export const Login = () => {
     return (
         <div className="sign-in">
             <div className="div">
-                <div className="text-wrapper">Seja bem-viado</div>
+                {/* <div className="iconlogin" >
+                <img
+                src="C:\Users\roner\Documents\GitHub\C2-ECommerce\c2-ecommerce\public\icon.png"
+                alt="Icone"
+                 />
+                </div> */}
+                <div className="centerdiv">
+                <div className="text-wrapper">Seja bem-vindo</div>
                 <div className="text-wrapper-2">Faça seu Login</div>
                 <input className="overlap" name="email" type="email" placeholder="Email" />
                 <input className="overlap-group" name="senha" type="password" placeholder="Senha" />
@@ -20,6 +28,7 @@ export const Login = () => {
                 <div className="SingUp">
                     <span className="span">Nao tem conta ainda?</span>
                     <a href="google.com" className="text-wrapper-6"> Registre-se</a>
+                </div>
                 </div>
             </div>
             
