@@ -17,10 +17,9 @@ export const Login = () => {
                 alt="Icone"
                  />
                 </div> */}
-                <div className="centerdiv">
                 <div className="text-wrapper">Seja bem-vindo</div>
                 <div className="text-wrapper-2">Faça seu Login</div>
-                <input className="overlap" name="email" type="email" placeholder="Email" />
+                <input className="overlap-group" name="email" type="email" placeholder="Email" />
                 <input className="overlap-group" name="senha" type="password" placeholder="Senha" />
                 <div><button type="button" onClick={HandleClick} className="div-wrapper" >Entrar</button></div>
                 <div>
@@ -31,8 +30,5 @@ export const Login = () => {
                 </div>
                 </div>
             </div>
-            
-            
-        </div>
     );
 }

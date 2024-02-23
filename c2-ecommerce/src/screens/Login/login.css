@@ -8,28 +8,12 @@
     width: 100%;
 }
 
-.centerdiv {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100vh; 
-}
-
-.centerdiv > * {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
 .sign-in .div {
     background-color: white;
-    display: flex;
-    height: 100vh;
+    display: block;
     text-align: center;
     align-items: center;
     justify-content: center;
-    width: 100%;
 }
 
 .sign-in .text-wrapper {
@@ -37,14 +21,11 @@
     font-family: "Outfit", Helvetica;
     font-size: 37px; 
     font-weight: 700; 
-    height: 47px;
-    left: 595px;
+   
     letter-spacing: 0;
-    line-height: normal;
-    position: absolute; 
+   
     text-align: center;
-    top: 233px;
-    width: 300px;
+   
 }
 
 .sign-in .text-wrapper-2 {
@@ -52,36 +33,19 @@
     font-family: "Outfit", Helvetica;
     font-size: 25px; 
     font-weight: 400; 
-    height: 35px;
-    left: 610px;
     letter-spacing: 0; line-height: normal;
-    position: absolute; 
     text-align: center;
-    top: 285px;
-    width: 270px;
-}
-
-.sign-in .overlap {
-    border: 0.6px solid;
-    border-color: #8e8383;
-    border-radius: 5px;
-    height: 49px;
-    left: 574px;
-    position: absolute;
-    top: 415px;
-    width: 342px;
+    margin-bottom: 50px;
 }
 
 .sign-in .overlap-group {
     border: 0.6px solid; 
     border-color: #8e8383; 
     border-radius: 5px;
-    height: 49px;
-    left: 573px;
-    padding: 2px;
-    position: absolute;
-    top: 473px;
-    width: 342px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
     }
 
 
@@ -90,16 +54,14 @@
     background-color: #66b032;
     border: 1.6px solid;
     border-color: dark;
+    color: white;
     border-radius: 5px;
-    height: 49px;
-    left: 574px;
-    position: absolute;
-    top: 577px;
-    width: 342px;
+    width: 100%;
+    padding: 10px;
 }
 
 .sign-in .span {
-    color: #555353;
+    color: #8e8383;
 }
 
 .sign-in .text-wrapper-6 {
@@ -111,13 +73,7 @@
     color: transparent;
     font-family: "Outfit", Helvetica;
     font-size: 16px;
-    font-weight: 400;
-    height: 20px;
-    left: 609px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
+    font-weight: 400;  
     text-align: center;
-    top: 767px;
-    width: 272px;
+    margin-top: 20px;
 }
