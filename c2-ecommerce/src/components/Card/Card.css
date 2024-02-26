@@ -1,0 +1,35 @@
+.container-card {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.my-2 {
+    width: 323.03px;
+    height: 550.39px;
+    padding: 15px;
+    margin-top: 150px;
+    box-shadow: 0px 5px 5px 5px #CCCCCC;
+    border-radius: 24px;
+    transform: rotate(0.08deg);
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    color: #3e3e3e;
+    background-color: white;
+}
+
+.card-header,
+.card-body {
+   text-align: center;
+}
+
+.card-text {
+    display: inline;
+    margin-left: 5px;
+}
+
+.card-valor {
+    font-size: 50px;
+}
