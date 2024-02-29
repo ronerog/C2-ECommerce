@@ -1,6 +1,7 @@
 'use client';
 import styles from "./menuTop.css";
 import React, { useState } from "react";
+import Link from 'next/link'
 
 export const MenuTop = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,7 +12,7 @@ export const MenuTop = () => {
 
     return (
         <div className="topnav">
-            <a href="#news">Planos e Preços</a>
+            <Link href="/">Planos e Precos</Link>
             <a href="#contact">Contato</a>
             <a href="#about">Sobre</a>
         </div>
