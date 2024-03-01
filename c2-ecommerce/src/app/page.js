@@ -2,10 +2,29 @@
 
 import { useState } from 'react';
 import { MenuTop } from "@/components/menuTop/MenuTop";
+import Table from '@/components/Table/TablePlans';
 import MyCard from "@/components/Card/Card";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+
+const plans = [
+  {
+    name: 'Plano A',
+    benefits: ['Benefício 1', 'Benefício 2', 'Benefício 3']
+  },
+  {
+    name: 'Plano B',
+    benefits: ['Benefício 2', 'Benefício 4', 'Benefício 5']
+  },
+  {
+    name: 'Plano C',
+    benefits: ['Benefício 1', 'Benefício 3', 'Benefício 5']
+  }
+];
+
+const benefits = ['Benefício 1', 'Benefício 2', 'Benefício 3', 'Benefício 4', 'Benefício 5'];
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -97,6 +116,10 @@ export default function Home() {
               </div>
             ))}
           </Slider>
+        </div>
+        <div>
+        <h2 className='table-title'>Comparação de Planos e Benefícios</h2>
+        <Table plans={plans} benefits={benefits} />
         </div>
       </main>
     </>

@@ -25,7 +25,7 @@ main {
 }
 
 .header-main-text {
-  margin-top: 200px;
+  margin-top: 150px;
   font-family: "Poppins", Sans-serif;
   font-size: 26px;
   font-weight: 600;
@@ -71,12 +71,15 @@ main {
  
 }
 
-
 .item-carrousel:not(.hovered):hover {
   transform: scale(1); 
 }
 
 .item-carrousel:not(.hovered):hover .card {
   box-shadow: none;
+}
 
+.table-title {
+  text-align: center;
+  margin-top: 50px;
 }

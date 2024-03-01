@@ -9,12 +9,7 @@
 .div-register {
   display: grid;
   place-items: center;
-  margin-top: 200px;
-}
-
-.title-register {
-  display: grid;
-  place-items: center;
+  margin-top: 120px;
 }
 
 .form {
@@ -29,7 +24,7 @@
   }
   
   .title {
-    font-size: 28px;
+    font-size: 46px;
     color: #66b032;
     font-weight: 600;
     letter-spacing: -1px;
@@ -63,7 +58,7 @@
   
   .message, .signin {
     color: rgba(88, 87, 87, 0.822);
-    font-size: 14px;
+    font-size: 18px;
   }
   
   .signin {
@@ -146,4 +141,15 @@
       transform: scale(1.8);
       opacity: 0;
     }
+  }
+
+  .form-card {
+    display: grid;
+    padding: 15px;
+    box-shadow: 0px 5px 5px 5px #CCCCCC;
+    border-radius: 24px;
+    color: #3e3e3e;
+    background-color: white;
+    font-size: 19px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   }

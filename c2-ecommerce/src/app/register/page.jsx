@@ -26,12 +26,14 @@ function RegistrationForm() {
     <header>
     <MenuTop />
     </header>
+    <main>
     <div className='div-register'>
     <form className="form">
       <div className='title-register'>
       <p className="title">Cadastre-se</p>
       <p className="message">Faça seu cadastro para finalizar a assinatura do seu plano</p>
       </div>
+      <div className='form-card'>
         <label>
           <input required placeholder="" type="text" className="input" />
           <span>Nome completo</span>
@@ -56,8 +58,10 @@ function RegistrationForm() {
         <span>Confirm password</span>
       </label>
       <button className="submit">Proximo</button>
+      </div>
     </form>
     </div>
+    </main>
     </>
   );
 }

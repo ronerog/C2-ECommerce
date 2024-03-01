@@ -45,6 +45,27 @@ const MyCard = () => {
         <span className='button-text'> Contratar Agora </span>            
         </button>
       </div>
+      <div className='beneficios-text'>
+      Beneficios:
+      </div>
+      <div className='beneficios'>
+        <div>
+        <ul className='lista'>
+          <li>Urna mortuaria</li>
+          <li>Vestes</li>
+          <li>Coroa de Flores Naturais</li>
+          <li>Tanatopraxia</li>
+          <li>Bumbum guloso do alfinho caga mole</li>
+          <li>Cemitério</li>
+          <li>Coroas Florais</li>
+          <li>Mantos / Edredons</li>
+          <li>Tanatopraxia</li>
+          <li>Velas</li>
+          <li>Vestuário</li>
+          <li>Véus</li>
+        </ul>
+        </div>
+      </div>
     </CardBody>
   </Card>
 
