@@ -9,7 +9,7 @@ function Table ({ plans, benefits }) {
 
   return (
     <div className="table-container">
-      <table className="custom-table">
+      <table className="custom-table responsive-table">
         <thead>
           <tr>
             <th>Benefícios</th>

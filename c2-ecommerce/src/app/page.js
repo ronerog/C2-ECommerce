@@ -31,7 +31,7 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "green" }}
+      style={{ display: "block !important", background: "green", size: '40px', content: "" }}
       onClick={onClick}
     />
   );
@@ -55,9 +55,13 @@ export default function Home() {
     setSelectedCardIndex(index);
   };
 
+  // nextArrow: <SampleNextArrow />,
+  //   prevArrow: <SamplePrevArrow />,
+    
+
   var settings = {
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: '',
+    prevArrow: '',
     dots: true,
     focusOnSelect: true,
     infinite: true,
@@ -104,6 +108,7 @@ export default function Home() {
           <div className="subtitle-box">Assinatura dos Planos</div>
         </div>
         <div className="carrousel-div">
+          {}
           <Slider {...settings}>
             {[...Array(6)].map((_, index) => (
               <div
