@@ -15,6 +15,7 @@ export const MenuTop = () => {
             <Link href="/">Planos e Precos</Link>
             <a href="#contact">Contato</a>
             <a href="#about">Sobre</a>
+            <Link href="/login">Faca seu Login</Link>
         </div>
     );
 }

@@ -5,6 +5,7 @@ import { MenuTop } from "@/components/menuTop/MenuTop";
 import Table from '@/components/Table/TablePlans';
 import MyCard from "@/components/Card/Card";
 import Slider from "react-slick";
+import { Footer } from '@/components/Footer/Footer'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -127,6 +128,9 @@ export default function Home() {
         <Table plans={plans} benefits={benefits} />
         </div>
       </main>
+      <footer>
+      <Footer />
+      </footer>
     </>
   );
 }

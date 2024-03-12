@@ -1,22 +1,30 @@
 'use client';
 import styles from "./login.css";
 import React from "react";
-import icone from "../../../public/icon.png"
+import { MenuTop } from '@/components/menuTop/MenuTop';
+import { Footer } from '@/components/Footer/Footer'
+import img from "../../../public/img-pass.jpg"
+import Link from 'next/link'
+import Image from "next/image";
 
-export const Login = () => {
+export default function Login() {
 
     function HandleClick() {
         alert('Hello world')}
    
     return (
+        <>
+        <header>
+        <MenuTop />
+        </header>
         <div className="sign-in">
             <div className="div">
-                {/* <div className="iconlogin" >
-                <img
-                src="C:\Users\roner\Documents\GitHub\C2-ECommerce\c2-ecommerce\public\icon.png"
-                alt="Icone"
-                 />
-                </div> */}
+            <Image
+                src={img}
+                width={70} 
+                height={70}
+                alt="Picture of the author"
+                />    
                 <div className="text-wrapper">Seja bem-vindo</div>
                 <div className="text-wrapper-2">Faça seu Login</div>
                 <input className="overlap-group" name="email" type="email" placeholder="Email" />
@@ -26,9 +34,13 @@ export const Login = () => {
                 </div>
                 <div className="SingUp">
                     <span className="span">Nao tem conta ainda?</span>
-                    <a href="google.com" className="text-wrapper-6"> Registre-se</a>
+                    <Link className="text-wrapper-6" href="/register"> Registre-se</Link>
                 </div>
                 </div>
             </div>
+            <footer>
+                <Footer />
+            </footer>
+            </>
     );
 }

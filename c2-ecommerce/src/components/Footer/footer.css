@@ -1,0 +1,23 @@
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.ul-footer {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.li-footer {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+.a-footer {
+	color: #fff;
+	text-decoration: none;
+}

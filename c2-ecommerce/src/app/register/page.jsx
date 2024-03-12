@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from "./register.css"
 import { MenuTop } from '@/components/menuTop/MenuTop';
+import { Footer } from '@/components/Footer/Footer'
 
 function RegistrationForm() {
   const [step, setStep] = useState(1);
@@ -110,6 +111,9 @@ function RegistrationForm() {
           </form>
         </div>
       </main>
+      <footer>
+      <Footer />
+      </footer>
     </>
   );
 }
