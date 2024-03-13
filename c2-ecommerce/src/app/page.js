@@ -1,6 +1,5 @@
 'use client'
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MenuTop } from "@/components/menuTop/MenuTop";
 import Table from '@/components/Table/TablePlans';
 import MyCard from "@/components/Card/Card";
@@ -8,24 +7,6 @@ import Slider from "react-slick";
 import { Footer } from '@/components/Footer/Footer'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
-const plans = [
-  {
-    name: 'Plano A',
-    benefits: ['Benefício 1', 'Benefício 2', 'Benefício 3']
-  },
-  {
-    name: 'Plano B',
-    benefits: ['Benefício 2', 'Benefício 4', 'Benefício 5']
-  },
-  {
-    name: 'Plano C',
-    benefits: ['Benefício 1', 'Benefício 3', 'Benefício 5']
-  }
-];
-
-const benefits = ['Benefício 1', 'Benefício 2', 'Benefício 3', 'Benefício 4', 'Benefício 5'];
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -51,14 +32,25 @@ function SamplePrevArrow(props) {
 
 export default function Home() {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+  const [plans, setPlans] = useState([]);
 
-  const handleCardHover = (index) => {
-    setSelectedCardIndex(index);
-  };
+  useEffect(() => {
+    const url = 'http://192.168.15.11:3003/searchplanos?DataBaseName=sigef_web_novo';
 
-  // nextArrow: <SampleNextArrow />,
-  //   prevArrow: <SamplePrevArrow />,
-    
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setPlans(data.map(plan => plan.PLA_NOME)); // Extrai apenas os nomes dos planos
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  }, []); // Executa apenas uma vez, quando o componente é montado
 
   var settings = {
     nextArrow: '',
@@ -111,12 +103,12 @@ export default function Home() {
         <div className="carrousel-div">
           {}
           <Slider {...settings}>
-            {[...Array(6)].map((_, index) => (
+            {[...Array(plans.length)].map((_, index) => (
               <div
                 key={index}
                 className={`item-carrousel ${selectedCardIndex === index ? 'hovered' : ''}`}
-                onMouseEnter={() => handleCardHover(index)}
-                onMouseLeave={() => handleCardHover(null)}
+                onMouseEnter={() => setSelectedCardIndex(index)}
+                onMouseLeave={() => setSelectedCardIndex(null)}
               >
                 <MyCard />
               </div>
@@ -124,12 +116,12 @@ export default function Home() {
           </Slider>
         </div>
         <div>
-        <h2 className='table-title'>Comparação de Planos e Benefícios</h2>
-        <Table plans={plans} benefits={benefits} />
+          <h2 className='table-title'>Comparação de Planos e Benefícios</h2>
+          <Table plans={plans} />
         </div>
       </main>
       <footer>
-      <Footer />
+        <Footer />
       </footer>
     </>
   );

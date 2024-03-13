@@ -55,7 +55,6 @@ const MyCard = () => {
           <li>Vestes</li>
           <li>Coroa de Flores Naturais</li>
           <li>Tanatopraxia</li>
-          <li>Bumbum guloso do alfinho caga mole</li>
           <li>Cemitério</li>
           <li>Coroas Florais</li>
           <li>Mantos / Edredons</li>

@@ -5,8 +5,9 @@
 }
 
 .custom-table {
-  width: 80%;
+  max-width: 80%;
   border-collapse: collapse;
+
 }
 
 .custom-table th,
