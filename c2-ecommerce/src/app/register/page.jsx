@@ -16,17 +16,44 @@ function RegistrationForm() {
   };
 
   useEffect(() => {
+  //MASK CPF
     const input = document.getElementById('input-cpf');
-    input.addEventListener('keypress', () => {
-      let inputLength = input.value.length;
+    input.addEventListener('keypress', (event) => {
+    const charCode = event.which ? event.which : event.keyCode;
 
-      // MAX LENGHT 14 CPF
-      if (inputLength === 3 || inputLength === 7) {
-        input.value += '.';
-      } else if (inputLength === 11) {
-        input.value += '-';
-      }
-    });
+  
+  if (charCode < 48 || charCode > 57 || input.value.length >= 14) {
+    event.preventDefault();
+  } else {
+    let inputLength = input.value.length;
+
+    if (inputLength === 3 || inputLength === 7) {
+      input.value += '.';
+    } else if (inputLength === 11) {
+      input.value += '-';
+    }
+  }
+});
+//MASK CELULAR
+const inputCelular = document.getElementById('input-celular');
+inputCelular.addEventListener('keypress', (event) => {
+  const charCode = event.which ? event.which : event.keyCode;
+
+ 
+  if (charCode < 48 || charCode > 57 || inputCelular.value.length >= 15) {
+    event.preventDefault();
+  } else {
+    let inputLengthCel = inputCelular.value.length;
+
+    if (inputLengthCel === 0) {
+      inputCelular.value += '(';
+    } else if (inputLengthCel === 3) {
+      inputCelular.value += ') ';
+    } else if (inputLengthCel === 10) {
+      inputCelular.value += '-';
+    }
+  }
+});
   }, []);
 
   function buscaCEP() {
@@ -85,7 +112,7 @@ function RegistrationForm() {
                 </label>
                 <label>
                 <span className='input-title'>Celular</span>
-                  <input required placeholder="" type="text" className="overlap-group" />
+                  <input id="input-celular" required placeholder="" type="text" className="overlap-group" />
                   
                 </label>
                 <label>
@@ -110,6 +137,11 @@ function RegistrationForm() {
                 <label> 
                 <span className='input-title'>Endereço</span>
                   <input id='txtEndereco' required placeholder="" className="overlap-group"/>
+                </label>
+                
+                <label> 
+                <span className='input-title'>Complemento</span>
+                  <input id='txtEndereco' required placeholder="Número, Edf, Apt" className="overlap-group"/>
                 </label>
                 <label> 
                 <span className='input-title'>Bairro</span>

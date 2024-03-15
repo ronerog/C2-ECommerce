@@ -35,7 +35,7 @@ export default function Home() {
   const [plans, setPlans] = useState([]);
 
   useEffect(() => {
-    const url = 'http://192.168.15.11:3003/searchplanos?DataBaseName=sigef_web_novo';
+    const url = 'http://jiapi-wpp.vps-kinghost.net:3003/searchplanos?DataBaseName=sigef_web_novo';
 
     fetch(url)
       .then(response => {
@@ -60,7 +60,7 @@ export default function Home() {
     infinite: true,
     speed: 800,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     initialSlide: 0,
     responsive: [
       {
@@ -73,15 +73,15 @@ export default function Home() {
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 800,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 1
         }
       },
       {
-        breakpoint: 480,
+        breakpoint: 500,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
@@ -98,7 +98,7 @@ export default function Home() {
           <h1>Planos para você e sua família</h1>
         </div>
         <div className="subtitle-div">
-          <div className="subtitle-box">Assinatura dos Planos</div>
+          <div className="subtitle-box">Comparar nossos planos</div>
         </div>
         <div className="carrousel-div">
           {}

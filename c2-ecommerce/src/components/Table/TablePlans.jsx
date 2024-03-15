@@ -8,7 +8,7 @@ function Table() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.15.11:3003/searchplanos?DataBaseName=sigef_web_novo');
+        const response = await fetch('http://jiapi-wpp.vps-kinghost.net:3003/searchplanos?DataBaseName=sigef_web_novo');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -89,32 +89,3 @@ function Table() {
 }
 
 export default Table;
-
-{/* <div className="table-container">
-      <table className="custom-table responsive-table">
-        <thead>
-          <tr>
-            <th>Benefícios</th>
-            
-            
-            {plans.map(plan => (
-              <th key={plan.PLA_CODIGO_ID}>{plan.PLA_NOME}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          
-          {benefits.map(benefit => (
-            <tr key={benefit}>
-              <td>{benefit}</td>
-              
-              {plans.map(plan => (
-                <td key={plan.PLA_CODIGO_ID}>
-                  {hasBenefit(plan, benefit) ? 'X' : ''}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div> */}
