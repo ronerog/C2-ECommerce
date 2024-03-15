@@ -1,11 +1,15 @@
-.table-container {
-  margin-top: 50px;
+.conteudo-beneficios {
   display: flex;
-  justify-content: center; /* Alinhar ao centro horizontalmente */
+  justify-content: flex-start;
+  margin: 50px;
+}
+
+.table-container {
+  max-width: 100%;
 }
 
 .custom-table {
-  max-width: 80%;
+ 
   border-collapse: collapse;
 
 }
@@ -13,7 +17,7 @@
 .custom-table th,
 .custom-table td {
   padding: 10px;
-  text-align: center;
+  text-align: left;
 }
 
 .custom-table th {
@@ -51,6 +55,33 @@
 .custom-table td:hover[data-has-benefit='false'] {
   background-color: #f0f0f0;
 }
+
+.coluna-1 {
+  width: 430px;
+  overflow: auto;
+}
+
+.coluna-1 td  {
+  max-width: 100%;  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  direction: ltr;
+}
+
+.coluna-2 {
+  width: 100% !important;
+  overflow: auto;
+}
+
+.coluna-2 table {
+  min-width: 3500px !important;
+}
+
+.coluna-2 table td , .coluna-2 table th {
+  text-align: center;
+}
+
 
 /* Adicionando estilo para tornar a tabela responsiva */
 @media only screen and (max-width: 768px) {

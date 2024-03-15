@@ -36,15 +36,14 @@ function Table() {
   };
 
   return (
-    <div className="table-container">
+    <>
+    <div className='conteudo-beneficios'>
+    <div className="table-container coluna-1">
       <table className="custom-table responsive-table">
         <thead>
           <tr>
             <th>Benefícios</th>
-            {/* Renderizar cabeçalhos das colunas para cada plano */}
-            {plans.map(plan => (
-              <th key={plan.PLA_CODIGO_ID}>{plan.PLA_NOME}</th>
-            ))}
+            
           </tr>
         </thead>
         <tbody>
@@ -52,7 +51,63 @@ function Table() {
           {benefits.map(benefit => (
             <tr key={benefit}>
               <td>{benefit}</td>
-              {/* Para cada plano, verificar se possui o benefício e renderizar 'X' ou vazio */}
+             
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="table-container coluna-2">
+      <table className="custom-table responsive-table">
+        <thead>
+          <tr>
+          {plans.map(plan => (
+              <th key={plan.PLA_CODIGO_ID}>{plan.PLA_NOME}</th>
+            ))}
+            
+          </tr>
+        </thead>
+        <tbody>
+          {/* Para cada benefício, renderizar uma linha na tabela */}
+          {benefits.map(benefit => (
+            <tr key={benefit}>
+              {plans.map(plan => (
+                <td key={plan.PLA_CODIGO_ID}>
+                  {hasBenefit(plan, benefit) ? 'X' : ''}
+                </td>
+              ))}
+             
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </>
+  );
+}
+
+export default Table;
+
+{/* <div className="table-container">
+      <table className="custom-table responsive-table">
+        <thead>
+          <tr>
+            <th>Benefícios</th>
+            
+            
+            {plans.map(plan => (
+              <th key={plan.PLA_CODIGO_ID}>{plan.PLA_NOME}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          
+          {benefits.map(benefit => (
+            <tr key={benefit}>
+              <td>{benefit}</td>
+              
               {plans.map(plan => (
                 <td key={plan.PLA_CODIGO_ID}>
                   {hasBenefit(plan, benefit) ? 'X' : ''}
@@ -62,8 +117,4 @@ function Table() {
           ))}
         </tbody>
       </table>
-    </div>
-  );
-}
-
-export default Table;
+    </div> */}
