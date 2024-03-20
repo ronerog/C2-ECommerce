@@ -75,7 +75,7 @@
 }
 
 .coluna-2 table {
-  min-width: 3500px !important;
+  min-width: 100% !important;
 }
 
 .coluna-2 table td , .coluna-2 table th {

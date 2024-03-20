@@ -9,7 +9,7 @@ export async function handleAuth(login, senha) {
     {
       method: "POST",
       body: JSON.stringify({
-        cpfContrato: login,
+        cpf: login,
         password: senha,
       }),
       headers: {

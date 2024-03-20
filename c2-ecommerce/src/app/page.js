@@ -8,34 +8,12 @@ import { Footer } from '@/components/Footer/Footer'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ display: "block !important", background: "green", size: '40px', content: "" }}
-      onClick={onClick}
-    />
-  );
-}
-
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{  display: "block", background: "green" }}
-      onClick={onClick}
-    />
-  );
-}
-
 export default function Home() {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [plans, setPlans] = useState([]);
 
   useEffect(() => {
-    const url = 'http://jiapi-wpp.vps-kinghost.net:3003/searchplanos?DataBaseName=sigef_web_novo';
+    const url = 'http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo';
 
     fetch(url)
       .then(response => {
@@ -45,7 +23,7 @@ export default function Home() {
         return response.json();
       })
       .then(data => {
-        setPlans(data.map(plan => plan.PLA_NOME)); // Extrai apenas os nomes dos planos
+        setPlans(data?.map(plan => plan.PLA_DESCRICAO)); // Extrai apenas os nomes dos planos
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
@@ -90,6 +68,8 @@ export default function Home() {
     ]
   };
 
+  console.log(plans);
+
   return (
     <>
       <header><MenuTop/></header>
@@ -103,7 +83,7 @@ export default function Home() {
         <div className="carrousel-div">
           {}
           <Slider {...settings}>
-            {[...Array(plans.length)].map((_, index) => (
+            {[...Array(plans.length)]?.map((_, index) => (
               <div
                 key={index}
                 className={`item-carrousel ${selectedCardIndex === index ? 'hovered' : ''}`}
