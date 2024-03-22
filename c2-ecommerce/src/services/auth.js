@@ -1,4 +1,4 @@
-const urlClientes = 'http://jiapi-wpp.vps-kinghost.net:3003/getclient?DataBaseName=sigef_web_novo';
+const urlClientes = `http://192.168.15.117:3003/verifyclientexist?DataBaseName=sigef_web_novo&cpf=`;
 const urlClientApp = 'link_client_app';
 
 //AUTENTICAÇÃO PARA LOGIN
@@ -52,17 +52,14 @@ export async function verifyEmailCliente(email) {
 }
 
 // Função para verificar o CPF do usuário na tabela cliente
-export async function verifyCPFCliente(cpf) {
+export async function verifyCPFCliente(cpfInput) {
   try {
-    const request = await fetch(`${urlClientes}`);
+    // const token = localStorage.getItem("token"); 
+
+    const request = await fetch(`${urlClientes}${cpfInput}`)
     const response = await request.json();
-    console.log(response);
-
-    const cpfRegister = response?.dados.map((usuario) => usuario.CLI_CPF);
-    console.log(cpf);
-    console.log(cpfRegister);
-
-    if (cpf == cpfRegister[0]) {
+    console.log(response.status)
+    if (response.status) {
       alert('Este CPF já está registrado!');
       return false;
     } else {

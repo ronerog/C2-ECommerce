@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './TablePlan.css';
+const urlFora = 'http://177.207.253.134:3003/searchplanos?DataBaseName=sigef_web_novo'
+const urllC2 = 'http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo'
 
 function Table() {
   const [plans, setPlans] = useState([]);
@@ -7,7 +9,7 @@ function Table() {
   const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
-    fetch('http://177.207.253.134:3003/searchplanos?DataBaseName=sigef_web_novo')
+    fetch('http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

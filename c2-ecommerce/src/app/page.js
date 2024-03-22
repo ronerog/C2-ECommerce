@@ -13,7 +13,7 @@ export default function Home() {
   const [plans, setPlans] = useState([]);
 
   useEffect(() => {
-    const url = 'http://177.207.253.134:3003/searchplanos?DataBaseName=sigef_web_novo';
+    const url = 'http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo';
 
     fetch(url)
       .then(response => {
@@ -28,7 +28,34 @@ export default function Home() {
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
       });
-  }, []); // Executa apenas uma vez, quando o componente é montado
+
+      // async function handleAuth() {
+      //   await fetch(
+      //     `http://jiapi-wpp.vps-kinghost.net:3003/authclient?DataBaseName=sigef_web_novo`,
+      //     {
+      //       method: "POST",
+      //       body: JSON.stringify({
+      //         cpfContrato: '11000',
+      //         password: '123',
+      //       }),
+      //       headers: {
+      //         "content-type": "application/json",
+      //       },
+      //     }
+      //   )
+      //     .then((response) => response.json())
+      //     .then((result) => {
+      //       console.log(result);
+      //       if(!result.dados) {
+      //         return result
+      //       }
+      //       const token = result.token;
+      //       localStorage.setItem("token", token);
+      //       return true;
+      //     });
+      // }
+      // handleAuth()
+  }, []);
 
   var settings = {
     nextArrow: '',

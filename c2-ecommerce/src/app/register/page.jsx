@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from "./register.css"
 import { MenuTop } from '@/components/menuTop/MenuTop';
 import { Footer } from '@/components/Footer/Footer'
+import { verifyCPFCliente } from '@/services/auth';
 
 function RegistrationForm() {
   const [step, setStep] = useState(1);
@@ -54,10 +55,18 @@ inputCelular.addEventListener('keypress', (event) => {
     }
   }
 });
+
   }, []);
 
   function handleCPF() {
-
+    const inputCPF = document.getElementById('input-cpf');
+    const cpfValue = inputCPF.value
+    console.log(cpfValue);
+    if(verifyCPFCliente(cpfValue)){
+      if (!true) {
+        alert("CPF Inválido");
+      }   
+    }
   }
 
   function buscaCEP() {
@@ -111,7 +120,7 @@ inputCelular.addEventListener('keypress', (event) => {
                 </label>
                 <label>
                 <span className='input-title'>CPF</span>
-                  <input id='input-cpf' required placeholder="" type="text" className="overlap-group"/>
+                  <input id='input-cpf' required placeholder="" type="text" className="overlap-group" onBlur={handleCPF}/>
                   
                 </label>
                 <label>
