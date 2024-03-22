@@ -58,16 +58,15 @@ export async function verifyCPFCliente(cpfInput) {
 
     const request = await fetch(`${urlClientes}${cpfInput}`)
     const response = await request.json();
-    console.log(response.status)
-    if (response.status) {
+    if (response.status && cpfInput.length > 0) {
       alert('Este CPF já está registrado!');
-      return false;
-    } else {
       return true;
+    } else {
+      return false;
     }
   } catch (error) {
     console.error("Error fetching user data:", error);
-    return false;
+    return true;
   }
 }
 

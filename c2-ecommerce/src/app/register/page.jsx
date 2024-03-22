@@ -58,14 +58,15 @@ inputCelular.addEventListener('keypress', (event) => {
 
   }, []);
 
-  function handleCPF() {
+  function removerMascaraCPF(cpfComMascara) {
+    return cpfComMascara.replace(/\D/g, '');
+}
+
+  async function handleCPF() {
     const inputCPF = document.getElementById('input-cpf');
-    const cpfValue = inputCPF.value
-    console.log(cpfValue);
-    if(verifyCPFCliente(cpfValue)){
-      if (!true) {
-        alert("CPF Inválido");
-      }   
+    let cpfValue = removerMascaraCPF(inputCPF.value);
+    if(await verifyCPFCliente(cpfValue)){
+      inputCPF.value = ''
     }
   }
 
