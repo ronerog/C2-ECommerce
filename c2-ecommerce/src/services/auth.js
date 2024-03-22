@@ -1,4 +1,4 @@
-const urlClientes = `http://192.168.15.117:3003/verifyclientexist?DataBaseName=sigef_web_novo&cpf=`;
+const urlClientes = `http://192.168.15.117:3003/verifyclientexist?DataBaseName=sigef_web_novo&cpfEmail=`;
 const urlClientApp = 'link_client_app';
 
 //AUTENTICAÇÃO PARA LOGIN
