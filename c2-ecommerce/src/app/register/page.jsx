@@ -7,6 +7,7 @@ import { verifyCPFCliente } from '@/services/auth';
 
 function RegistrationForm() {
   const [step, setStep] = useState(1);
+  const [filled, setFilled] = useState(false)
 
   const handleNextStep = () => {
     setStep(step + 1);
