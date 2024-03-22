@@ -56,6 +56,10 @@ inputCelular.addEventListener('keypress', (event) => {
 });
   }, []);
 
+  function handleCPF() {
+
+  }
+
   function buscaCEP() {
     let cep = document.getElementById('txtCEP').value;
     if (cep !== "") {
@@ -107,7 +111,7 @@ inputCelular.addEventListener('keypress', (event) => {
                 </label>
                 <label>
                 <span className='input-title'>CPF</span>
-                  <input id='input-cpf' required placeholder="" type="text" className="overlap-group" />
+                  <input id='input-cpf' required placeholder="" type="text" className="overlap-group"/>
                   
                 </label>
                 <label>
