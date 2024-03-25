@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './TablePlan.css';
+import Image from 'next/image'
+import verificado from '../../../public/verificado.png'
+
 const urlFora = 'http://177.207.253.134:3003/searchplanos?DataBaseName=sigef_web_novo'
 const urllC2 = 'http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo'
 
@@ -61,7 +64,12 @@ function Table() {
                 {/* Para cada plano, verificar se possui o benefício e marcar 'X' ou '' */}
                 {plans.map((plan, planIndex) => (
                   <td key={planIndex}>
-                    {hasBenefit(benefit, planIndex) ? 'X' : ''}
+                    {hasBenefit(benefit, planIndex) ? <Image
+      src={verificado}
+      width={17}
+      height={17}
+      alt="Picture of the author"
+    /> : ''}
                   </td>
                 ))}
               </tr>
