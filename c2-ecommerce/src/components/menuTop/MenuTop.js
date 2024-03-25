@@ -2,6 +2,8 @@
 import styles from "./menuTop.css";
 import React, { useState } from "react";
 import Link from 'next/link'
+import img from "../../../public/img-pass.jpg"
+import Image from "next/image";
 
 export const MenuTop = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -12,6 +14,14 @@ export const MenuTop = () => {
 
     return (
         <div className="topnav">
+            
+            <Image
+                src={img}
+                width={30} 
+                height={30}
+                alt="Picture of the author"
+                /> 
+            
             <Link href="/">Planos e Precos</Link>
             <a href="#contact">Contato</a>
             <a href="#about">Sobre</a>

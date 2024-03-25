@@ -9,6 +9,7 @@
 
   .topnav > * {
     margin-right: 15px;
+    display: inline;
   }
   
   
@@ -16,7 +17,7 @@
     display: inline-block; 
     color: #3e3e3e;
     text-align: center;
-    padding: 18px 16px;
+    padding: 16px 16px;
     text-decoration: solid;
     font-size: 16px;
     line-height: 1.5;

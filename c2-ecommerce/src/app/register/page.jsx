@@ -4,6 +4,8 @@ import styles from "./register.css"
 import { MenuTop } from '@/components/menuTop/MenuTop';
 import { Footer } from '@/components/Footer/Footer'
 import { verifyCPFCliente } from '@/services/auth';
+import img from "../../../public/img-pass.jpg"
+import Image from "next/image";
 
 function RegistrationForm() {
   const [step, setStep] = useState(1);
