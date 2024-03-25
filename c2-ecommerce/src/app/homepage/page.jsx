@@ -16,7 +16,7 @@ const Homepage = () => {
   return (
     <div>
       <h1>Bem-vindo à nossa página!</h1>
-      <p>Rônero</p>
+      <p>Rônero, assine o contrato e em seguida efetue o pagamento diretamente pelo site.</p>
       
       {!signedContract && (
         <button onClick={handleSignContract}>Assinar o contrato</button>

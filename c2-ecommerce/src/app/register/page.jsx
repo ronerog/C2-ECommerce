@@ -4,8 +4,7 @@ import styles from "./register.css"
 import { MenuTop } from '@/components/menuTop/MenuTop';
 import { Footer } from '@/components/Footer/Footer'
 import { verifyCPFCliente } from '@/services/auth';
-import img from "../../../public/img-pass.jpg"
-import Image from "next/image";
+
 
 function RegistrationForm() {
   const [step, setStep] = useState(1);
@@ -172,8 +171,9 @@ inputCelular.addEventListener('keypress', (event) => {
                 <span className='input-title'>Estado</span>
                   <input id='txtEstado' required placeholder="" className="overlap-group"/>
                 </label>
-                <button className="submit" onClick={handleNextStep}>Próximo</button>
                 <button className="submit" onClick={handlePreviousStep}>Voltar</button>
+                <button className="submit" onClick={handleNextStep}>Próximo</button>
+                
               </div>
             )}
             {step === 3 && (
@@ -192,8 +192,9 @@ inputCelular.addEventListener('keypress', (event) => {
                 <span className='input-title' >Confirmar senha</span>
                   <input required placeholder="" type="password" className="overlap-group"/> 
                 </label>
-                <button className="submit">Enviar</button>
                 <button className="submit" onClick={handlePreviousStep}>Voltar</button>
+                <button className="submit">Enviar</button>
+                {/* COLOCAR ON SUBMIT PARA ENVIAR OS DADOS, ENVIAR PARA A HOMEPAGE TAMBEM E COLOCAR SETP4 DANDO OK */}
               </div>
             )}
           </form>
