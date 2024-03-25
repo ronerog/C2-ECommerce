@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './TablePlan.css';
 import Image from 'next/image'
 import verificado from '../../../public/verificado.png'
+import naoIncluso from '../../../public/excluir.png'
 
 const urlFora = 'http://177.207.253.134:3003/searchplanos?DataBaseName=sigef_web_novo'
 const urllC2 = 'http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo'
@@ -69,7 +70,12 @@ function Table() {
       width={17}
       height={17}
       alt="Picture of the author"
-    /> : ''}
+    /> : <Image
+    src={naoIncluso}
+    width={20}
+    height={20}
+    alt="Picture of the author"
+  />}
                   </td>
                 ))}
               </tr>
