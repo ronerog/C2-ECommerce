@@ -7,6 +7,7 @@ import { verifyCPFCliente } from '@/services/auth';
 
 function RegistrationForm() {
   const [step, setStep] = useState(1);
+  const [filled, setFilled] = useState(false)
 
   const handleNextStep = () => {
     setStep(step + 1);
@@ -121,12 +122,12 @@ inputCelular.addEventListener('keypress', (event) => {
                 </label>
                 <label>
                 <span className='input-title'>CPF</span>
-                  <input id='input-cpf' required placeholder="" className="overlap-group" onBlur={handleCPF}/>
+                  <input id='input-cpf' required placeholder="" type="text" className="overlap-group" onBlur={handleCPF}/>
                   
                 </label>
                 <label>
                 <span className='input-title'>Celular</span>
-                  <input id="input-celular" required placeholder="" className="overlap-group" />
+                  <input id="input-celular" required placeholder="" type="text" className="overlap-group" />
                   
                 </label>
                 <label>

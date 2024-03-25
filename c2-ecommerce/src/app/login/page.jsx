@@ -6,11 +6,15 @@ import { Footer } from '@/components/Footer/Footer'
 import img from "../../../public/img-pass.jpg"
 import Link from 'next/link'
 import Image from "next/image";
+import { useRouter } from 'next/navigation'
 
 export default function Login() {
 
+    const router = useRouter()
+
     function HandleClick() {
-        alert('Hello world')}
+        router.push('/homepage')
+    }
    
     return (
         <>
