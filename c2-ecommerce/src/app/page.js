@@ -105,7 +105,7 @@ export default function Home() {
           <h1>Planos para você e sua família</h1>
         </div>
         <div className="subtitle-div">
-          <div className="subtitle-box">Comparar nossos planos</div>
+          <div className="subtitle-box"><a href='#table-comparacao'>Comparar nossos planos</a></div>
         </div>
         <div className="carrousel-div">
           {}
@@ -123,7 +123,7 @@ export default function Home() {
           </Slider>
         </div>
         <div>
-          <h2 className='table-title'>Comparação de Planos e Benefícios</h2>
+          <h2 id='table-comparacao' className='table-title'>Comparação de Planos e Benefícios</h2>
           <Table plans={plans} />
         </div>
       </main>
