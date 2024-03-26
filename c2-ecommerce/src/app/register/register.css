@@ -1,7 +1,6 @@
 .date-input-label input[type="date"] {
-  font-family: '__Inter_aaf875', '__Inter_Fallback_aaf875'; /* Altere a fonte conforme desejado */
   color: gray;
-  font-size: 0.9em;
+  font-size: 0.8em;
   cursor: text;
 }
 

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from "./register.css"
 import { MenuTop } from '@/components/menuTop/MenuTop';
 import { Footer } from '@/components/Footer/Footer'
@@ -10,8 +10,16 @@ function RegistrationForm() {
   const [step, setStep] = useState(1);
   const [filled, setFilled] = useState(false)
 
+  const formRef = useRef(null);
+
   const handleNextStep = () => {
-    setStep(step + 1);
+    // Verifica se o formulário é válido antes de prosseguir
+    if (formRef.current.checkValidity()) {
+      setStep(step + 1);
+    } else {
+      // Se o formulário não for válido, exibe mensagens de erro ou realiza outras ações necessárias
+      formRef.current.reportValidity();
+    }
   };
 
   const handlePreviousStep = () => {
@@ -72,8 +80,10 @@ inputCelular.addEventListener('keypress', (event) => {
     }
   }
 
+
   function buscaCEP() {
     let cep = document.getElementById('txtCEP').value;
+    
     if (cep !== "") {
       let url = `https://brasilapi.com.br/api/cep/v1/${cep}`;
       fetch(url)
@@ -95,6 +105,18 @@ inputCelular.addEventListener('keypress', (event) => {
     }
   }
 
+  // const handleZipCode = (e) => {
+  //   let input = e.target
+  //   input.value = zipCodeMask(input.value)
+  // }
+  
+  // const zipCodeMask = (value) => {
+  //   if (!value) return ""
+  //   value = value.replace(/\D/g,'')
+  //   value = value.replace(/(\d{5})(\d)/,'$1-$2')
+  //   return value
+  // }
+
   return (
     <>
       <header>
@@ -102,7 +124,7 @@ inputCelular.addEventListener('keypress', (event) => {
       </header>
       <main>
         <div className='div-register'>
-          <form className="form">
+          <form ref={formRef} className="form">
             <div className='title-register'>
               <p className="title">Cadastre-se</p>
               <p className="message">Faça seu cadastro para finalizar a assinatura do seu plano</p>
@@ -111,7 +133,7 @@ inputCelular.addEventListener('keypress', (event) => {
               <div className='form-card'>
                 <label>
                 <span className='input-title'>Nome completo</span>
-                  <input required placeholder="" type="text" className="overlap-group" />
+                  <input required placeholder="Nome Completo" maxLength={60} type="text" className="overlap-group" />
                   
                 </label>        
                 
@@ -123,17 +145,17 @@ inputCelular.addEventListener('keypress', (event) => {
                 </label>
                 <label>
                 <span className='input-title'>CPF</span>
-                  <input id='input-cpf' required placeholder="" type="text" className="overlap-group" onBlur={handleCPF}/>
+                  <input id='input-cpf' required placeholder="Digite seu CPF" type="text" className="overlap-group" onBlur={handleCPF}/>
                   
                 </label>
                 <label>
                 <span className='input-title'>Celular</span>
-                  <input id="input-celular" required placeholder="" type="text" className="overlap-group" />
+                  <input id="input-celular" required placeholder="" className="overlap-group" />
                   
                 </label>
                 <label>
                 <span className='input-title'>Sexo</span>
-                  <select required placeholder="" type="" className="overlap-group">
+                  <select required placeholder="" className="overlap-group">
                   <option value="Masculino">Masculino</option>
                   <option value="Feminino">Feminino</option>
                   </select>
@@ -147,53 +169,54 @@ inputCelular.addEventListener('keypress', (event) => {
               <div className='form-card'>
                 <label>
                 <span className='input-title'>CEP</span>
-                  <input id='txtCEP' required placeholder="" type="email" className="overlap-group" onChange={buscaCEP} />
+                  <input id='txtCEP' required placeholder="Digite seu CEP" maxLength={8} className="overlap-group" onChange={buscaCEP} />
                   
                 </label>
                 <label> 
                 <span className='input-title'>Endereço</span>
-                  <input id='txtEndereco' required placeholder="" className="overlap-group"/>
+                  <input id='txtEndereco' required placeholder="" type='text' maxLength={80} className="overlap-group"/>
                 </label>
                 
                 <label> 
                 <span className='input-title'>Complemento</span>
-                  <input id='txtEndereco' required placeholder="Número, Edf, Apt" className="overlap-group"/>
+                  <input id='txtEndereco' required maxLength={40} type='text' placeholder="Número, Edf, Apt" className="overlap-group"/>
                 </label>
                 <label> 
                 <span className='input-title'>Bairro</span>
-                  <input id='txtBairro' required placeholder="" className="overlap-group"/>
+                  <input id='txtBairro' maxLength={30} type='text' required placeholder="" className="overlap-group"/>
                 </label>
                 <label> 
                 <span className='input-title'>Cidade</span>
-                  <input id='txtCidade' required placeholder="" className="overlap-group"/>
+                  <input id='txtCidade' maxLength={30} type='text' required placeholder="" className="overlap-group"/>
                 </label>
                 <label> 
                 <span className='input-title'>Estado</span>
-                  <input id='txtEstado' required placeholder="" className="overlap-group"/>
+                  <input id='txtEstado' maxLength={3} type='text' required placeholder="" className="overlap-group"/>
                 </label>
-                <button className="submit" onClick={handlePreviousStep}>Voltar</button>
-                <button className="submit" onClick={handleNextStep}>Próximo</button>
                 
+                <button className="submit" onClick={handleNextStep}>Próximo</button>
+                <button className="submit" onClick={handlePreviousStep}>Voltar</button>
               </div>
             )}
             {step === 3 && (
               <div className='form-card'>
                  <label>
                 <span className='input-title' >Email</span>
-                  <input required placeholder="" type="email" className="overlap-group" />
+                  <input required placeholder="Digite seu e-mail" type="email" className="overlap-group" />
                   
                 </label>
                 <label>
                 <span className='input-title' >Senha</span>
-                  <input required placeholder="" type="password" className="overlap-group" />
+                  <input required placeholder="Digite sua senha" type="password" className="overlap-group" />
                   
                 </label>
                 <label>
                 <span className='input-title' >Confirmar senha</span>
-                  <input required placeholder="" type="password" className="overlap-group"/> 
+                  <input required placeholder="Confirme sua senha" type="password" className="overlap-group"/> 
                 </label>
-                <button className="submit" onClick={handlePreviousStep}>Voltar</button>
+                
                 <button className="submit">Enviar</button>
+                <button className="submit" onClick={handlePreviousStep}>Voltar</button>
                 {/* COLOCAR ON SUBMIT PARA ENVIAR OS DADOS, ENVIAR PARA A HOMEPAGE TAMBEM E COLOCAR SETP4 DANDO OK */}
               </div>
             )}
