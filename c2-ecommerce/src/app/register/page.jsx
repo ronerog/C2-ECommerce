@@ -85,14 +85,15 @@ inputCelular.addEventListener('keypress', (event) => {
     let cep = document.getElementById('txtCEP').value;
     
     if (cep !== "") {
-      let url = `https://brasilapi.com.br/api/cep/v1/${cep}`;
+      let url = `https://viacep.com.br/ws/${cep}/json/`;
+      console.log(cep);
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            document.getElementById('txtEndereco').value = (data.street == undefined) ? '' : data.street; 
-            document.getElementById('txtBairro').value = (data.neighborhood == undefined) ? '' : data.neighborhood;
-            document.getElementById('txtCidade').value = (data.city == undefined) ? '' : data.city;
-            document.getElementById('txtEstado').value = (data.state == undefined) ? '' : data.state;
+            document.getElementById('txtEndereco').value = (data.logradouro == undefined) ? '' : data.logradouro; 
+            document.getElementById('txtBairro').value = (data.bairro == undefined) ? '' : data.bairro;
+            document.getElementById('txtCidade').value = (data.localidade == undefined) ? '' : data.localidade;
+            document.getElementById('txtEstado').value = (data.uf == undefined) ? '' : data.uf;
         })
         .catch((error) => {
           console.error('Erro ao buscar CEP:', error);
