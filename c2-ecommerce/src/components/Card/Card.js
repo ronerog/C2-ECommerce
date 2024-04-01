@@ -34,8 +34,13 @@ const MyCard = ({ descricao, valor, beneficios }) => {
                 R$ 
               </CardText>
               <CardText className='card-valor'>
-                {valor}
+                {valor.toFixed()}
               </CardText>
+              ,
+              <CardText>
+                {valor.toFixed(2).split('.')[1]}
+              </CardText>
+             
               <CardText>
                 /mês
               </CardText>
