@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MenuTop } from "@/components/menuTop/MenuTop";
 import Table from '@/components/Table/TablePlans';
 import MyCard from "@/components/Card/Card";
@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
-  const [plans, setPlans] = useState([]);
+  const [tudo, setTudo] = useState([]);
 
   useEffect(() => {
     const url = 'http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo';
@@ -23,38 +23,12 @@ export default function Home() {
         return response.json();
       })
       .then(data => {
-        setPlans(data?.map(plan => plan.PLA_DESCRICAO)); // Extrai apenas os nomes dos planos
+        setTudo(data || []);
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
       });
 
-      // async function handleAuth() {
-      //   await fetch(
-      //     `http://jiapi-wpp.vps-kinghost.net:3003/authclient?DataBaseName=sigef_web_novo`,
-      //     {
-      //       method: "POST",
-      //       body: JSON.stringify({
-      //         cpfContrato: '11000',
-      //         password: '123',
-      //       }),
-      //       headers: {
-      //         "content-type": "application/json",
-      //       },
-      //     }
-      //   )
-      //     .then((response) => response.json())
-      //     .then((result) => {
-      //       console.log(result);
-      //       if(!result.dados) {
-      //         return result
-      //       }
-      //       const token = result.token;
-      //       localStorage.setItem("token", token);
-      //       return true;
-      //     });
-      // }
-      // handleAuth()
   }, []);
 
   var settings = {
@@ -65,7 +39,7 @@ export default function Home() {
     infinite: true,
     speed: 800,
     slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToScroll: 3,
     initialSlide: 0,
     responsive: [
       {
@@ -95,8 +69,6 @@ export default function Home() {
     ]
   };
 
-  console.log(plans);
-
   return (
     <>
       <header><MenuTop/></header>
@@ -108,23 +80,22 @@ export default function Home() {
           <div className="subtitle-box"><a href='#table-comparacao'>Comparar nossos planos</a></div>
         </div>
         <div className="carrousel-div">
-          {}
           <Slider {...settings}>
-            {[...Array(plans.length)]?.map((_, index) => (
+            {tudo?.map((plan, index) => (
               <div
                 key={index}
                 className={`item-carrousel ${selectedCardIndex === index ? 'hovered' : ''}`}
                 onMouseEnter={() => setSelectedCardIndex(index)}
                 onMouseLeave={() => setSelectedCardIndex(null)}
               >
-                <MyCard />
+                <MyCard descricao={plan?.PLA_DESCRICAO} valor={plan?.PLA_VALOR} beneficios={plan} />
               </div>
             ))}
           </Slider>
         </div>
         <div>
           <h2 id='table-comparacao' className='table-title'>Comparação de Planos e Benefícios</h2>
-          <Table plans={plans} />
+          <Table plans={tudo?.map(plan => plan.PLA_DESCRICAO)} />
         </div>
       </main>
       <footer>

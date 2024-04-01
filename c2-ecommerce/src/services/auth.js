@@ -19,7 +19,7 @@ export async function handleAuth(login, senha) {
   )
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
+     
       if(!result.dados) {
         return result
       }
@@ -35,7 +35,7 @@ export async function verifyEmailCliente(email) {
   try {
     const request = await fetch(`${urlClientes}`);
     const response = await request.json();
-    console.log(response);
+   
 
     const login = response?.dados.map((usuario) => usuario.CLI_EMAIL);
 
@@ -75,7 +75,7 @@ export async function verifyEmailClienteApp(email) {
   try {
     const request = await fetch(`${urlClientApp}`);
     const response = await request.json();
-    console.log(response);
+    
 
     const login = response?.dados.map((usuario) => usuario.CLI_APP_EMAIL);
 
@@ -96,11 +96,10 @@ export async function verifyCPFClienteApp(cpf) {
   try {
     const request = await fetch(`${urlClientApp}`);
     const response = await request.json();
-    console.log(response);
+  
 
     const cpfRegister = response?.dados.map((usuario) => usuario.CLI_APP_CPF);
-    console.log(cpf);
-    console.log(cpfRegister);
+    
 
     if (cpf !== cpfRegister[0]) {
       alert('Este CPF já está registrado!');
