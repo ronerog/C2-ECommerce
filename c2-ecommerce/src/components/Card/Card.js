@@ -7,11 +7,18 @@ import { useRouter } from 'next/navigation'
 const MyCard = ({ descricao, valor, beneficios }) => {
   const router = useRouter();
 
-  console.log(
-    beneficios.BENEFICIOS
-      .filter(beneficio => beneficio.BNP_DESCRICAO !== null)
-      .map(beneficio => beneficio.BNP_DESCRICAO.length > 0 && beneficio.BNP_DESCRICAO)
-  );
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+function capitalizeWords(sentence) {
+    var words = sentence.split(' ');
+    for (var i = 0; i < words.length; i++) {
+        words[i] = capitalizeFirstLetter(words[i]);
+    }
+    return words.join(' ');
+}
+
 
   return (
     <>
@@ -57,7 +64,7 @@ const MyCard = ({ descricao, valor, beneficios }) => {
               <ul className='lista'>
                 {beneficios.BENEFICIOS
       .filter((beneficio) => beneficio.BNP_DESCRICAO !== null)
-      .map((beneficio, index) => beneficio.BNP_DESCRICAO.length > 0 && <li key={index}>{beneficio.BNP_DESCRICAO}</li>)
+      .map((beneficio, index) => beneficio.BNP_DESCRICAO.length > 0 && <li key={index}>{capitalizeWords(beneficio.BNP_DESCRICAO)}</li>)
                   } 
               </ul>
             </div>
