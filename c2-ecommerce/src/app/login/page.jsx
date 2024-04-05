@@ -20,6 +20,9 @@ export default function Login() {
         <>
         <header>
         <MenuTop />
+        <MenuTop />
+        <MenuTop />
+        <MenuTop />
         </header>
         <div className="sign-in">
             <div className="div">

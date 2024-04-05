@@ -4,20 +4,42 @@ import styles from "./register.css"
 import { MenuTop } from '@/components/menuTop/MenuTop';
 import { Footer } from '@/components/Footer/Footer'
 import { verifyCPFCliente } from '@/services/auth';
-
+import Image from 'next/image';
+import submitted from '../../../public/submitted.gif'
+import { useRouter } from 'next/navigation'
+import { verificaCPF } from '@/services/validations';
 
 function RegistrationForm() {
+  const router = useRouter();
+
+  function HandleClickLogin() {
+    router.push('/login');
+  }
+
   const [step, setStep] = useState(1);
-  const [filled, setFilled] = useState(false)
+  const [formData, setFormData] = useState({
+    nome: '',
+    dataNascimento: '',
+    cpf: '',
+    celular: '',
+    sexo: '',
+    cep: '',
+    endereco: '',
+    complemento: '',
+    bairro: '',
+    cidade: '',
+    estado: '',
+    email: '',
+    senha: '',
+    confirmarSenha: ''
+  });
 
   const formRef = useRef(null);
 
   const handleNextStep = () => {
-    // Verifica se o formulário é válido antes de prosseguir
     if (formRef.current.checkValidity()) {
       setStep(step + 1);
     } else {
-      // Se o formulário não for válido, exibe mensagens de erro ou realiza outras ações necessárias
       formRef.current.reportValidity();
     }
   };
@@ -26,97 +48,97 @@ function RegistrationForm() {
     setStep(step - 1);
   };
 
-  useEffect(() => {
-  //MASK CPF
-    const input = document.getElementById('input-cpf');
-    input.addEventListener('keypress', (event) => {
-    const charCode = event.which ? event.which : event.keyCode;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
 
-  
-  if (charCode < 48 || charCode > 57 || input.value.length >= 14) {
-    event.preventDefault();
-  } else {
-    let inputLength = input.value.length;
-
-    if (inputLength === 3 || inputLength === 7) {
-      input.value += '.';
-    } else if (inputLength === 11) {
-      input.value += '-';
-    }
-  }
-});
-//MASK CELULAR
-const inputCelular = document.getElementById('input-celular');
-inputCelular.addEventListener('keypress', (event) => {
-  const charCode = event.which ? event.which : event.keyCode;
-
- 
-  if (charCode < 48 || charCode > 57 || inputCelular.value.length >= 15) {
-    event.preventDefault();
-  } else {
-    let inputLengthCel = inputCelular.value.length;
-
-    if (inputLengthCel === 0) {
-      inputCelular.value += '(';
-    } else if (inputLengthCel === 3) {
-      inputCelular.value += ') ';
-    } else if (inputLengthCel === 10) {
-      inputCelular.value += '-';
-    }
-  }
-});
-
-  }, []);
-
-  function removerMascaraCPF(cpfComMascara) {
-    return cpfComMascara.replace(/\D/g, '');
-}
-
-  async function handleCPF() {
+  function maskCPF() {
+    // Aplicar máscara de CPF
     const inputCPF = document.getElementById('input-cpf');
-    let cpfValue = removerMascaraCPF(inputCPF.value);
-    if(await verifyCPFCliente(cpfValue)){
-      inputCPF.value = ''
-    }
+    inputCPF.addEventListener('keypress', (event) => {
+      const charCode = event.which ? event.which : event.keyCode;
+      if (charCode < 48 || charCode > 57 || inputCPF.value.length >= 14) {
+        event.preventDefault();
+      } else {
+        let inputLength = inputCPF.value.length;
+        if (inputLength === 3 || inputLength === 7) {
+          inputCPF.value += '.';
+        } else if (inputLength === 11) {
+          inputCPF.value += '-';
+        }
+      }
+    });
   }
 
+    function maskCelular() {
+      const inputCelular = document.getElementById('input-celular');
+      inputCelular.addEventListener('keypress', (event) => {
+        const charCode = event.which ? event.which : event.keyCode;
+        if (charCode < 48 || charCode > 57 || inputCelular.value.length >= 15) {
+          event.preventDefault();
+        } else {
+          let inputLengthCel = inputCelular.value.length;
+          if (inputLengthCel === 0) {
+            inputCelular.value += '(';
+          } else if (inputLengthCel === 3) {
+            inputCelular.value += ') ';
+          } else if (inputLengthCel === 10) {
+            inputCelular.value += '-';
+          }
+        }
+      });
+    }
+    
 
+  // Função para buscar o CEP
   function buscaCEP() {
     let cep = document.getElementById('txtCEP').value;
-    
     if (cep !== "") {
       let url = `https://viacep.com.br/ws/${cep}/json/`;
-      console.log(cep);
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            document.getElementById('txtEndereco').value = (data.logradouro == undefined) ? '' : data.logradouro; 
-            document.getElementById('txtBairro').value = (data.bairro == undefined) ? '' : data.bairro;
-            document.getElementById('txtCidade').value = (data.localidade == undefined) ? '' : data.localidade;
-            document.getElementById('txtEstado').value = (data.uf == undefined) ? '' : data.uf;
+          setFormData({
+            ...formData,
+            endereco: data.logradouro || '',
+            bairro: data.bairro || '',
+            cidade: data.localidade || '',
+            estado: data.uf || ''
+          });
         })
         .catch((error) => {
           console.error('Erro ao buscar CEP:', error);
-         
-          document.getElementById('txtEndereco').value = '';
-          document.getElementById('txtBairro').value = '';
-          document.getElementById('txtCidade').value = '';
-          document.getElementById('txtEstado').value = '';
+          setFormData({
+            ...formData,
+            endereco: '',
+            bairro: '',
+            cidade: '',
+            estado: ''
+          });
         });
     }
   }
 
-  // const handleZipCode = (e) => {
-  //   let input = e.target
-  //   input.value = zipCodeMask(input.value)
-  // }
-  
-  // const zipCodeMask = (value) => {
-  //   if (!value) return ""
-  //   value = value.replace(/\D/g,'')
-  //   value = value.replace(/(\d{5})(\d)/,'$1-$2')
-  //   return value
-  // }
+  // Função para remover máscara do CPF
+  function removerMascaraCPF(cpfComMascara) {
+    return cpfComMascara.replace(/\D/g, '');
+  }
+
+  async function handleCPF() {
+    const inputCPF = document.getElementById('input-cpf');
+    let cpfValue = removerMascaraCPF(inputCPF.value);
+    if  (!verificaCPF(cpfValue) && cpfValue.length > 0) {
+      alert("CPF inválido!");
+      inputCPF.value = ''
+    }
+    if (await verifyCPFCliente(cpfValue)) {
+      inputCPF.value = ''
+    }
+  }
 
   return (
     <>
@@ -133,95 +155,223 @@ inputCelular.addEventListener('keypress', (event) => {
             {step === 1 && (
               <div className='form-card'>
                 <label>
-                <span className='input-title'>Nome completo</span>
-                  <input required placeholder="Nome Completo" maxLength={60} type="text" className="overlap-group" />
-                  
-                </label>        
-                
-                
+                  <span className='input-title'>Nome completo</span>
+                  <input
+                    required
+                    placeholder="Nome Completo"
+                    maxLength={60}
+                    type="text"
+                    className="overlap-group"
+                    name="nome"
+                    value={formData.nome}
+                    onChange={handleChange}
+                  />
+                </label>
                 <span className='input-title'>Data de Nascimento</span>
-                <label className="date-input-label"> 
-                  <input required placeholder="Data de Nacimento" type="date" className="overlap-group"/>
+                <label className="date-input-label">
+                  <input
+                    required
+                    placeholder="Data de Nacimento"
+                    type="date"
+                    className="overlap-group"
+                    name="dataNascimento"
+                    value={formData.dataNascimento}
+                    onChange={handleChange}
+                  />
                   <span></span>
                 </label>
                 <label>
-                <span className='input-title'>CPF</span>
-                  <input id='input-cpf' required placeholder="Digite seu CPF" type="text" className="overlap-group" onBlur={handleCPF}/>
-                  
+                  <span className='input-title'>CPF</span>
+                  <input
+                    id='input-cpf'
+                    required
+                    placeholder="Digite seu CPF"
+                    type="text"
+                    className="overlap-group"
+                    name="cpf"
+                    value={formData.cpf}
+                    onChange={handleChange}
+                    onBlur={handleCPF}
+                    onKeyUp={maskCPF}
+                  />
                 </label>
                 <label>
-                <span className='input-title'>Celular</span>
-                  <input id="input-celular" required placeholder="" className="overlap-group" />
-                  
+                  <span className='input-title'>Celular</span>
+                  <input
+                    id="input-celular"
+                    required
+                    placeholder=""
+                    className="overlap-group"
+                    name="celular"
+                    value={formData.celular}
+                    onChange={handleChange}
+                    onBlur={maskCelular}
+                  />
                 </label>
                 <label>
-                <span className='input-title'>Sexo</span>
-                  <select required placeholder="" className="overlap-group">
-                  <option value="Masculino">Masculino</option>
-                  <option value="Feminino">Feminino</option>
+                  <span className='input-title'>Sexo</span>
+                  <select
+                    required
+                    placeholder=""
+                    className="overlap-group"
+                    name="sexo"
+                    value={formData.sexo}
+                    onChange={handleChange}
+                  >
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
                   </select>
-                  
                 </label>
-                
                 <button className="submit" onClick={handleNextStep}>Próximo</button>
               </div>
             )}
-            {step === 2 && (
+             {step === 2 && (
               <div className='form-card'>
                 <label>
-                <span className='input-title'>CEP</span>
-                  <input id='txtCEP' required placeholder="Digite seu CEP" maxLength={8} className="overlap-group" onChange={buscaCEP} />
-                  
+                  <span className='input-title'>CEP</span>
+                  <input
+                    id='txtCEP'
+                    required
+                    placeholder="Digite seu CEP"
+                    maxLength={8}
+                    className="overlap-group"
+                    onBlur={buscaCEP}
+                    value={formData.cep}
+                    name="cep"
+                    onChange={handleChange}
+                  />
                 </label>
-                <label> 
-                <span className='input-title'>Endereço</span>
-                  <input id='txtEndereco' required placeholder="" type='text' maxLength={80} className="overlap-group"/>
+                <label>
+                  <span className='input-title'>Endereço</span>
+                  <input
+                    id='txtEndereco'
+                    required
+                    placeholder=""
+                    type='text'
+                    maxLength={80}
+                    className="overlap-group"
+                    value={formData.endereco}
+                    name="endereco"
+                    onChange={handleChange}
+                  />
                 </label>
-                
-                <label> 
-                <span className='input-title'>Complemento</span>
-                  <input id='txtEndereco' required maxLength={40} type='text' placeholder="Número, Edf, Apt" className="overlap-group"/>
+                <label>
+                  <span className='input-title'>Complemento</span>
+                  <input
+                    id='txtEndereco'
+                    required
+                    maxLength={40}
+                    type='text'
+                    placeholder="Número, Edf, Apt"
+                    className="overlap-group"
+                    value={formData.complemento}
+                    name="complemento"
+                    onChange={handleChange}
+                  />
                 </label>
-                <label> 
-                <span className='input-title'>Bairro</span>
-                  <input id='txtBairro' maxLength={30} type='text' required placeholder="" className="overlap-group"/>
+                <label>
+                  <span className='input-title'>Bairro</span>
+                  <input
+                    id='txtBairro'
+                    maxLength={30}
+                    type='text'
+                    required
+                    placeholder=""
+                    className="overlap-group"
+                    value={formData.bairro}
+                    name="bairro"
+                    onChange={handleChange}
+                  />
                 </label>
-                <label> 
-                <span className='input-title'>Cidade</span>
-                  <input id='txtCidade' maxLength={30} type='text' required placeholder="" className="overlap-group"/>
+                <label>
+                  <span className='input-title'>Cidade</span>
+                  <input
+                    id='txtCidade'
+                    maxLength={30}
+                    type='text'
+                    required
+                    placeholder=""
+                    className="overlap-group"
+                    value={formData.cidade}
+                    name="cidade"
+                    onChange={handleChange}
+                  />
                 </label>
-                <label> 
-                <span className='input-title'>Estado</span>
-                  <input id='txtEstado' maxLength={3} type='text' required placeholder="" className="overlap-group"/>
+                <label>
+                  <span className='input-title'>Estado</span>
+                  <input
+                    id='txtEstado'
+                    maxLength={3}
+                    type='text'
+                    required
+                    placeholder=""
+                    className="overlap-group"
+                    value={formData.estado}
+                    name="estado"
+                    onChange={handleChange}
+                  />
                 </label>
-                
                 <button className="submit" onClick={handleNextStep}>Próximo</button>
                 <button className="submit" onClick={handlePreviousStep}>Voltar</button>
               </div>
             )}
             {step === 3 && (
               <div className='form-card'>
-                 <label>
-                <span className='input-title' >Email</span>
-                  <input required placeholder="Digite seu e-mail" type="email" className="overlap-group" />
-                  
+                <label>
+                  <span className='input-title'>Email</span>
+                  <input
+                    required
+                    placeholder="Digite seu e-mail"
+                    type="email"
+                    className="overlap-group"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
                 </label>
                 <label>
-                <span className='input-title' >Senha</span>
-                  <input required placeholder="Digite sua senha" type="password" className="overlap-group" />
-                  
+                  <span className='input-title'>Senha</span>
+                  <input
+                    required
+                    placeholder="Digite sua senha"
+                    type="password"
+                    className="overlap-group"
+                    name="senha"
+                    value={formData.senha}
+                    onChange={handleChange}
+                  />
                 </label>
                 <label>
-                <span className='input-title' >Confirmar senha</span>
-                  <input required placeholder="Confirme sua senha" type="password" className="overlap-group"/> 
+                  <span className='input-title'>Confirmar senha</span>
+                  <input
+                    required
+                    placeholder="Confirme sua senha"
+                    type="password"
+                    className="overlap-group"
+                    name="confirmarSenha"
+                    value={formData.confirmarSenha}
+                    onChange={handleChange}
+                  />
                 </label>
-                
-                <button className="submit">Enviar</button>
+                <button className="submit" onClick={handleNextStep}>Enviar</button>
                 <button className="submit" onClick={handlePreviousStep}>Voltar</button>
-                {/* COLOCAR ON SUBMIT PARA ENVIAR OS DADOS, ENVIAR PARA A HOMEPAGE TAMBEM E COLOCAR SETP4 DANDO OK */}
               </div>
             )}
-          </form>
+            </form>
+            {step === 4 && (
+              <div className='form-card'>
+                <Image
+                  src={submitted}
+                  width={200}
+                  height={150}
+                  className='success-image'
+                />
+                <p className=''>Cadastro realizado com sucesso!</p>
+                <button className="submit" onClick={HandleClickLogin}>Fazer Login</button>
+              </div>
+            )}
+          
+         
         </div>
       </main>
       <footer>
