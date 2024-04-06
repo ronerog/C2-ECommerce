@@ -23,9 +23,8 @@ export const MenuTop = () => {
                 alt="Picture of the author"
                 /> 
             
-            <Link href="/">Planos e Precos</Link>
+            <Link href="/">Planos e Preços</Link>
             <a href="#contact">Contato</a>
-            <a href="#about">Sobre</a>
             <Link href="/login">Faça seu Login</Link>
         </div>
     );

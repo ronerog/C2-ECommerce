@@ -6,7 +6,7 @@
 html,
 body {
   margin: 0;
-  font-family: "Poppins", '-apple-system','BlinkMacSystemFont','Segoe UI','Roboto,Helvetica Neue','Arial','Noto Sans','sans-serif','Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+  font-family: "Poppins", '-apple-system','Segoe UI','BlinkMacSystemFont','Roboto,Helvetica Neue','Arial','Noto Sans','sans-serif','Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
   font-size: 1rem;
     line-height: 1.5;
   color: #333;

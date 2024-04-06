@@ -8,12 +8,14 @@ export const Footer = () => {
 
     return (
         <>  
+        
           <Image
                 src={img}
                 width={50} 
                 height={50}
-                alt="Picture of the author"
-                />      
+                className="img-logo-footer"
+                />
+             
         <p>&copy; 2023 - Todos os direitos reservados</p>
         <nav>
             <ul className="ul-footer">
