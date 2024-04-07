@@ -1,79 +1,77 @@
 .sign-in {
-    background-color: white;
-    display: flex;
-    height: 100vh;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  background-color: white;
+  display: flex;
+  height: 100vh;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .sign-in .div {
-    background-color: white;
-    display: block;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+  background-color: white;
+  display: block;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .sign-in .text-wrapper {
-    color: #66b032;
-    font-family: "Outfit", Helvetica;
-    font-size: 37px; 
-    font-weight: 700; 
-   
-    letter-spacing: 0;
-   
-    text-align: center;
-   
+  color: #66b032;
+  font-family: "Outfit", Helvetica;
+  font-size: 37px;
+  font-weight: 700;
+
+  letter-spacing: 0;
+
+  text-align: center;
 }
 
 .sign-in .text-wrapper-2 {
-    color: #3e3e3e;
-    font-family: "Outfit", Helvetica;
-    font-size: 25px; 
-    font-weight: 400; 
-    letter-spacing: 0; line-height: normal;
-    text-align: center;
-    margin-bottom: 50px;
+  color: #3e3e3e;
+  font-family: "Outfit", Helvetica;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .sign-in .overlap-group {
-    border: 0.6px solid; 
-    border-color: #3e3e3e; 
-    border-radius: 5px;
-    padding: 10px;
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    }
-
-
+  border: 0.6px solid;
+  border-color: #3e3e3e;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
 .sign-in .div-wrapper {
-    background-color: #66b032;
-    border: 1.6px solid;
-    border-color: dark;
-    color: white;
-    border-radius: 5px;
-    width: 100%;
-    padding: 10px;
+  background-color: #66b032;
+  border: 1.6px solid;
+  border-color: dark;
+  color: white;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
 }
 
 .sign-in .span {
-    color: #3e3e3e;
+  color: #3e3e3e;
 }
 
 .sign-in .text-wrapper-6 {
-    color: #66b032;
-    font-weight: 700;
+  color: #66b032;
+  font-weight: 700;
 }
 
 .sign-in .SingUp {
-    color: transparent;
-    font-family: "Outfit", Helvetica;
-    font-size: 16px;
-    font-weight: 400;  
-    text-align: center;
-    margin-top: 20px;
+  color: transparent;
+  font-family: "Outfit", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 20px;
 }

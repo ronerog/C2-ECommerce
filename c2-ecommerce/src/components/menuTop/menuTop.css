@@ -1,43 +1,41 @@
 .topnav {
-    position: fixed;
-    background-color: white;
-    text-align: center;
-    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    z-index: 99;
-  }
+  position: fixed;
+  background-color: white;
+  text-align: center;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  z-index: 99;
+}
 
-  .topnav > * {
-    margin-right: 15px;
-    display: inline;
-  }
-  
-  
-  .topnav a {
-    display: inline-block; 
-    color: #3e3e3e;
-    text-align: center;
-    padding: 16px 16px;
-    text-decoration: solid;
-    font-size: 18px;
-    line-height: 1.5;
-  }
-  
- 
-  .topnav a:hover {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #66b032;
-    color: white;
-  }
-  
-  .topnav a.active {
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #66b032;
-    color: white;
-  }
+.topnav > * {
+  margin-right: 15px;
+  display: inline;
+}
 
-  #icone-menu {
-    margin-bottom: -8px;
-  }
+.topnav a {
+  display: inline-block;
+  color: #3e3e3e;
+  text-align: center;
+  padding: 16px 16px;
+  text-decoration: solid;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.topnav a:hover {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #66b032;
+  color: white;
+}
+
+.topnav a.active {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #66b032;
+  color: white;
+}
+
+#icone-menu {
+  margin-bottom: -8px;
+}

@@ -1,92 +1,92 @@
 .container-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .my-2 {
-    padding: 15px;
-    height: 600px;
-    margin-top: 120px;
-    margin-bottom: 50px;
-    box-shadow: 0px 5px 5px 5px #CCCCCC;
-    border-radius: 24px;
-    color: #3e3e3e;
-    background-color: white;
-    font-size: 19px;
-    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  padding: 15px;
+  height: 600px;
+  margin-top: 120px;
+  margin-bottom: 50px;
+  box-shadow: 0px 5px 5px 5px #cccccc;
+  border-radius: 24px;
+  color: #3e3e3e;
+  background-color: white;
+  font-size: 19px;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .my-2:hover {
-    /* Movimento para cima no eixo Y */
-    transform: translateY(-30px);
+  /* Movimento para cima no eixo Y */
+  transform: translateY(-30px);
 
-    /* Alterando o background color para verde */
-    background-color: #66b032; /* Verde */
+  /* Alterando o background color para verde */
+  background-color: #66b032; /* Verde */
 
-    /* Alterando a cor do texto para branco */
-    color: #ffffff; /* Branco */
+  /* Alterando a cor do texto para branco */
+  color: #ffffff; /* Branco */
 }
 
 .my-2:hover .button-card {
-    background-color: white; /* Alterando o background color para branco */
-    color: #3e3e3e; /* Alterando a cor do texto para a cor padrão */
+  background-color: white; /* Alterando o background color para branco */
+  color: #3e3e3e; /* Alterando a cor do texto para a cor padrão */
 }
 
 .card-header,
 .card-body {
-   text-align: center;
-   text-decoration: solid;
-   font-size: 19px;
-   line-height: 1.5;
+  text-align: center;
+  text-decoration: solid;
+  font-size: 19px;
+  line-height: 1.5;
 }
 
 .card-text {
-    display: inline;
-    margin-left: 5px;
-    text-decoration: solid;
-    font-size: 19px;
-    line-height: 1.5;
+  display: inline;
+  margin-left: 5px;
+  text-decoration: solid;
+  font-size: 19px;
+  line-height: 1.5;
 }
 
 .card-valor {
-    font-weight: 600;
-    font-size: 62px;
+  font-weight: 600;
+  font-size: 62px;
 }
 
 .button-card {
-    font-family: "Poppins", Sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    border-radius: 15px 15px 15px 15px;
-    padding: 15px 30px 15px 30px;
-    background-color: #66b032;
-    color: white;
-    border: none;
-    cursor: pointer;
+  font-family: "Poppins", Sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 15px 15px 15px 15px;
+  padding: 15px 30px 15px 30px;
+  background-color: #66b032;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .button-text {
-    flex-grow: 1;
-    order: 10;
-    display: inline-block;
+  flex-grow: 1;
+  order: 10;
+  display: inline-block;
 }
 
 .elementor-button-icon {
-    height: 1.4em;
-    padding-top: 2px;
-    padding-left: 6px;
+  height: 1.4em;
+  padding-top: 2px;
+  padding-left: 6px;
 }
 
 .beneficios {
-    margin-inline-start: 30px;
-    font-size: medium;
+  margin-inline-start: 30px;
+  font-size: medium;
 }
 
 .beneficios-text {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .beneficios .lista li {
-    text-align: left;
+  text-align: left;
 }

@@ -9,9 +9,7 @@
 }
 
 .custom-table {
- 
   border-collapse: collapse;
-
 }
 
 .custom-table th,
@@ -34,12 +32,12 @@
   font-weight: bold;
 }
 
-.custom-table td[data-has-benefit='true'] {
+.custom-table td[data-has-benefit="true"] {
   background-color: #66b032;
   color: white;
 }
 
-.custom-table td[data-has-benefit='false'] {
+.custom-table td[data-has-benefit="false"] {
   background-color: #fff;
   color: #3e3e3e;
 }
@@ -48,11 +46,11 @@
   cursor: pointer;
 }
 
-.custom-table td:hover[data-has-benefit='true'] {
+.custom-table td:hover[data-has-benefit="true"] {
   background-color: #4b8d1b;
 }
 
-.custom-table td:hover[data-has-benefit='false'] {
+.custom-table td:hover[data-has-benefit="false"] {
   background-color: #f0f0f0;
 }
 
@@ -61,8 +59,8 @@
   overflow: auto;
 }
 
-.coluna-1 td  {
-  max-width: 100%;  
+.coluna-1 td {
+  max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -78,10 +76,10 @@
   min-width: 100% !important;
 }
 
-.coluna-2 table td , .coluna-2 table th {
+.coluna-2 table td,
+.coluna-2 table th {
   text-align: center;
 }
-
 
 /* Adicionando estilo para tornar a tabela responsiva */
 @media only screen and (max-width: 768px) {
