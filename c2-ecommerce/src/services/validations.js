@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2'
+
 export function maskCPF(input) {
   input.addEventListener("keypress", (event) => {
     const charCode = event.which ? event.which : event.keyCode;
@@ -6,7 +8,6 @@ export function maskCPF(input) {
       event.preventDefault();
     } else {
       let inputLength = input.value.length;
-
       if (inputLength === 3 || inputLength === 7) {
         input.value += ".";
       } else if (inputLength === 11) {
@@ -92,3 +93,18 @@ export function verificaCPF(cpf) {
 
   return true; // CPF válido
 }
+
+export function validaNome(nome){
+  const nomeSobrenome = /\b[A-Za-zÀ-ú][A-Za-zÀ-ú]+,?\s[A-Za-zÀ-ú][A-Za-zÀ-ú]{2,19}(?:\s[A-Za-zÀ-ú][A-Za-zÀ-ú]{2,19})?\b/gi
+
+    if (!nomeSobrenome.test(nome) && nome.length > 5) {
+      Swal.fire({
+        title: "Ops...",
+        text: "Coloque um nome válido, o nome não deve conter números e nem espaços extras",
+        icon: "warning",
+      });
+      return false
+    } else {
+      return true
+    }
+  };

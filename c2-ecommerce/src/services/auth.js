@@ -1,6 +1,6 @@
 const urlClientes = `http://192.168.15.117:3003/verifyclientexist?DataBaseName=sigef_web_novo&cpfEmail=`;
 const urlClientApp = "link_client_app";
-
+import Swal from 'sweetalert2'
 //AUTENTICAÇÃO PARA LOGIN
 
 export async function handleAuth(login, senha) {
@@ -35,7 +35,11 @@ export async function verifyEmailCliente(email) {
     const login = response?.dados.map((usuario) => usuario.CLI_EMAIL);
 
     if (email == login[0]) {
-      alert("Este email já está registrado!");
+      Swal.fire({
+        title: "Ops...",
+        text: "Esse email já está registrado",
+        icon: "warning",
+      })
       return false;
     } else {
       return true;
@@ -54,7 +58,11 @@ export async function verifyCPFCliente(cpfInput) {
     const request = await fetch(`${urlClientes}${cpfInput}`);
     const response = await request.json();
     if (response.status && cpfInput.length > 0) {
-      alert("Este CPF já está registrado!");
+      Swal.fire({
+        title: "Ops...",
+        text: "Esse CPF já está registrado",
+        icon: "warning",
+      })
       return true;
     } else {
       return false;
