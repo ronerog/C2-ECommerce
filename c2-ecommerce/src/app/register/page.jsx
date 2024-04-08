@@ -149,11 +149,10 @@ function RegistrationForm() {
     !validaNome(inputNome.value)
   }
 
-  const handlePassword = (event) => {
-    event.preventDefault();
+  const handlePassword = () => {
     let inputSenha = document.getElementById("input-senha")
     let inputConfirmar = document.getElementById("input-confirmar-senha")
-    if (formData.senha !== formData.confirmarSenha) {
+    if (inputConfirmar.value !== inputSenha.value) {
       Swal.fire({
         title: "Ops...",
         text: "As senhas devem ser iguais!",
@@ -164,8 +163,9 @@ function RegistrationForm() {
     }
   };
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  function handleSubmit() {
+    
+    handlePassword()
     if(formRef.current.checkValidity()){
       Swal.fire({
         title: "Maravilha!",
@@ -394,7 +394,6 @@ function RegistrationForm() {
                     className="overlap-group"
                     name="confirmarSenha"
                     onChange={handleChange}
-                    onBlur={handlePassword}
                   />
                 </label>
                 <button
