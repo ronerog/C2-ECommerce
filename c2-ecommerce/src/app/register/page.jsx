@@ -160,7 +160,7 @@ function RegistrationForm() {
         icon: "warning",
       });
       inputSenha.value = ""
-      inputConfirmar = ""
+      inputConfirmar.value = ""
     }
   };
 
@@ -229,7 +229,6 @@ function RegistrationForm() {
                     type="text"
                     className="overlap-group"
                     name="cpf"
-                    value={formData.cpf}
                     onChange={handleChange}
                     onBlur={handleCPF}
                     onKeyUp={maskCPF}
@@ -370,7 +369,6 @@ function RegistrationForm() {
                     type="email"
                     className="overlap-group"
                     name="email"
-                    value={formData.email}
                     onChange={handleChange}
                   />
                 </label>
@@ -383,7 +381,6 @@ function RegistrationForm() {
                     type="password"
                     className="overlap-group"
                     name="senha"
-                    value={formData.senha}
                     onChange={handleChange}
                   />
                 </label>
@@ -396,9 +393,8 @@ function RegistrationForm() {
                     type="password"
                     className="overlap-group"
                     name="confirmarSenha"
-                    value={formData.confirmarSenha}
                     onChange={handleChange}
-                    onBlur={handlePassword }
+                    onBlur={handlePassword}
                   />
                 </label>
                 <button
