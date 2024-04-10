@@ -7,7 +7,7 @@ import img from "../../../public/icon.png";
 export const Footer = () => {
   return (
     <>
-      <Image src={img} width={50} height={50} className="img-logo-footer" />
+      <Image src={img} width={50} height={50} className="img-logo-footer"  alt="Picture of the author"/>
 
       <p>&copy; 2023 - Todos os direitos reservados</p>
       <nav>

@@ -18,7 +18,7 @@ export default function Home() {
   const [tudo, setTudo] = useState([]);
 
   useEffect(() => {
-    const url = 'http://177.207.253.134:3003/searchplanos?DataBaseName=sigef_web_novo';
+    const url = 'http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo';
 
     fetch(url)
       .then(response => {

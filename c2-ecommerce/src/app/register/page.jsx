@@ -72,6 +72,18 @@ function RegistrationForm() {
     });
   }
 
+  const handleZipCode = (event) => {
+    let input = event.target
+    input.value = zipCodeMask(input.value)
+  }
+
+  const zipCodeMask = (value) => {
+    if (!value) return ""
+    value = value.replace(/\D/g,'')
+    value = value.replace(/(\d{5})(\d)/,'$1-$2')
+    return value
+  }
+
   function maskCelular() {
     const inputCelular = document.getElementById("input-celular");
     inputCelular.addEventListener("keypress", (event) => {
@@ -93,7 +105,8 @@ function RegistrationForm() {
 
   // Função para buscar o CEP
   function buscaCEP() {
-    let cep = document.getElementById("txtCEP").value;
+    let cepMask = document.getElementById("txtCEP").value;
+    const cep = removerMascaraCPF(cepMask)
     if (cep !== "") {
       let url = `https://viacep.com.br/ws/${cep}/json/`;
       fetch(url)
@@ -160,7 +173,7 @@ function RegistrationForm() {
     }
   };
 
-  function handleSubmit(e) {
+  function handleSubmit() {
     e.preventDefault();
     handlePassword()
     if(formRef.current.checkValidity()){
@@ -170,7 +183,7 @@ function RegistrationForm() {
         icon: "success",
       });
       router.push("/login");
-    }           
+  }            
   }
 
   async function handleForm(e) {
@@ -178,7 +191,7 @@ function RegistrationForm() {
     const JSONDATA = JSON.stringify(formData)
     const axiosConfig = { headers: { 'Content-Type': 'application/json' } };
   try {
-    await axios.post(BACKEND_URL + "/", JSONDATA, axiosConfig);
+    await axios.post(`http://192.168.15.117:3003/addclientes?DataBaseName=sigef_web_novo`, JSONDATA, axiosConfig);
     Swal.fire({
       title: "Maravilha!",
       text: "Seu cadastro foi concluído com sucesso!",
@@ -250,7 +263,7 @@ catch (error) {
                     name="cpf"
                     onChange={handleChange}
                     onBlur={handleCPF}
-                    onKeyUp={maskCPF}
+                    onKeyDown={maskCPF}
                   />
                 </label>
                 <label>
@@ -293,12 +306,13 @@ catch (error) {
                     id="txtCEP"
                     required
                     placeholder="Digite seu CEP"
-                    maxLength={8}
+                    maxLength={9}
                     className="overlap-group"
                     onBlur={buscaCEP}
                     value={formData.cep}
                     name="cep"
                     onChange={handleChange}
+                    onKeyDown={handleZipCode}
                   />
                 </label>
                 <label>

@@ -15,7 +15,7 @@ function Table() {
   const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
-    fetch("http://177.207.253.134:3003/searchplanos?DataBaseName=sigef_web_novo")
+    fetch("http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -59,7 +59,7 @@ function Table() {
         <table className="custom-table responsive-table">
           <thead>
             <tr>
-              <th>Produtos</th>
+              <th></th>
               {/* Mapear cada plano para criar cabeçalhos de coluna */}
               {plans.map((plan, index) => (
                 <th key={index}>{plan}</th>
