@@ -173,7 +173,7 @@ function RegistrationForm() {
     }
   };
 
-  function handleSubmit() {
+  function handleSubmit(e) {
     e.preventDefault();
     handlePassword()
     if(formRef.current.checkValidity()){
