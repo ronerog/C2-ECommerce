@@ -8,12 +8,17 @@ import { Footer } from '@/components/Footer/Footer'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+const urlFora =
+  "http://177.207.253.134:3003/searchplanos?DataBaseName=sigef_web_novo";
+const urllC2 =
+  "http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo";
+
 export default function Home() {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [tudo, setTudo] = useState([]);
 
   useEffect(() => {
-    const url = 'http://192.168.15.117:3003/searchplanos?DataBaseName=sigef_web_novo';
+    const url = 'http://177.207.253.134:3003/searchplanos?DataBaseName=sigef_web_novo';
 
     fetch(url)
       .then(response => {

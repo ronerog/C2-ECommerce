@@ -9,13 +9,10 @@ import submitted from "../../../public/submitted.gif";
 import { useRouter } from "next/navigation";
 import { verificaCPF, validaNome } from "@/services/validations";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 function RegistrationForm() {
   const router = useRouter();
-
-  function HandleClickLogin() {
-    router.push("/login");
-  }
 
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -163,8 +160,8 @@ function RegistrationForm() {
     }
   };
 
-  function handleSubmit() {
-    
+  function handleSubmit(e) {
+    e.preventDefault();
     handlePassword()
     if(formRef.current.checkValidity()){
       Swal.fire({
@@ -175,6 +172,28 @@ function RegistrationForm() {
       router.push("/login");
     }           
   }
+
+  async function handleForm(e) {
+    e.preventDefault();
+    const JSONDATA = JSON.stringify(formData)
+    const axiosConfig = { headers: { 'Content-Type': 'application/json' } };
+  try {
+    await axios.post(BACKEND_URL + "/", JSONDATA, axiosConfig);
+    Swal.fire({
+      title: "Maravilha!",
+      text: "Seu cadastro foi concluído com sucesso!",
+      icon: "success",
+    });
+}
+catch (error) {
+
+  Swal.fire({
+    title: "Ops...",
+    text: "Erro no cadastro",
+    icon: "error",
+  });
+}
+}
 
   return (
     <>
